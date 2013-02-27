@@ -1,87 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-Copyright (c) 2013 Genome Research Limited.
-This file is released under the GPL version 3 detailed in the LICENSE file.
--->
-<head>
-<title>
-HATTIE
-</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-</head>
-<body>
-<h1>Create/Edit Processing Request</h1>
-<form>
-<label>HGI Project Name:</label>
-<select id="project_name">
-<option>Lorem Ipsum</option>
-</select>
-<br />
-<label for="processing_name">Processing Request Name:</label>
-<input id="processing_name" type="text" /><br />
-<label for="sequencescape_name">Sequencescape Study Name</label>
-<select id="sequencescape_name">
-</select><br />
-<label for="project_type">Project Type:</label>
-<select id="project_type">
-<option>Select...</option>
-<option>WGS</option>
-<option>WES</option>
-<option>Targeted Resequencing</option>
-</select><br />
-<div>
-<label for="target_select">Please select either existing target file</label>
-<select id="target_select">
-</select><br />
-<label for="target_file">or upload a target file</label>
-<input id="target_file" type="file" />
-</div>
-<label for="variant_calling_requested">Do you require variants to be called?</label>
-<select id="variant_calling_requested">
-<option>Yes</option>
-<option>No</option>
-</select>
-<br />
-<label for="imputation_requested">Do you require imputation?</label>
-<select id="imputation_requested">
-<option>Yes</option>
-<option>No</option>
-</select>
-<div id="wgs">
-</div>
-<div id="exome">
-</div>
-<div id="variant_calling">
-<h2>Variant Calling</h2>
-<h3>Samtools and bcftools options</h3>
-
-<h3>Filtering Options</h3>
-<label>Do you wish to use VQSR Filtering?</label>
-<select>
-<option>Yes</option>
-<option>No</option>
-</select><br />
-<div>
-<h4>VQSR settings:</h4>
-</div>
-<h4>Hard Filters</h4>
-<label>RefN</label>
-<input type="checkbox" /><br />
-<h3>Annotation:</h3>
-<label>ID field</label>
-<select>
-<option>DBSNP 137</option>
-<option>None</option>
-</select><br />
-<label>VEP</label>
-<input type="checkbox" /><br />
-</div>
-<div id="imputation">
-<h2>Imputation Options</h2>
-Do it yourself.<br />
-</div>
-<input type="submit" />
-</form>
-</body>
+    <!--
+     Copyright (c) 2013 Genome Research Limited.
+     This file is released under the GPL version 3 detailed in the LICENSE file.
+     -->
+    <head>
+        <title>
+            HATTIE
+        </title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <style>
+            .formdata
+            {
+                display: table-cell
+            }
+            .formdata>span
+            {
+                display: table-row
+            }
+            label
+            {
+                display: table-cell
+            }
+            .formdata>select,input
+            {
+                display: table-cell
+            }
+            
+            </style>
+    </head>
+    <body>
+        <h1>Create/Edit Processing Request</h1>
+        <form>
+            <div class="formdata">
+                <span>
+                    <label>HGI Project Name:</label>
+                    <select id="project_name">
+                        <option>Lorem Ipsum</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="processing_name">Processing Request Name:</label>
+                    <input id="processing_name" type="text" />
+                </span>
+                <span>
+                    <label for="sequencescape_name">Sequencescape Study Name</label>
+                    <select id="sequencescape_name">
+                    </select>
+                </span>
+                <span>
+                    <label for="project_type">Project Type:</label>
+                    <select id="project_type">
+                        <option>Select...</option>
+                        <option>WGS</option>
+                        <option>WES</option>
+                        <option>Targeted Resequencing</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="target_select">Please select either existing target file</label>
+                    <select id="target_select">
+                    </select>
+                </span>
+                <span>
+                    <label for="target_file">or upload a target file</label>
+                    <input id="target_file" type="file" />
+                </span>
+                </span>
+                <span>
+                    <label for="variant_calling_requested">Do you require variants to be called?</label>
+                    <select id="variant_calling_requested">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="imputation_requested">Do you require imputation?</label>
+                    <select id="imputation_requested">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+            </div>
+            <div id="wgs">
+            </div>
+            <div id="exome">
+            </div>
+            <div id="variant_calling" class="formdata">
+                <h2>Variant Calling</h2>
+                <h3>Samtools and bcftools options</h3>
+                
+                <h3>Filtering Options</h3>
+                <span>
+                    <label>Do you wish to use VQSR Filtering?</label>
+                    <select>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+                <div id="vqsr_settings" class="formdata">
+                    <h4>VQSR settings:</h4>
+                    <span>
+                        <label>Truth Sites</label>
+                        <input type="text" />
+                    </span>
+                </div>
+                <h4>Hard Filters</h4>
+                <h5>SNPs</h5>
+                <span>
+                    <label>Min Depth</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max Qual by Depth</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max Mapping Quality</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Min FS</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Min Haplotype Score</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max MQ Rank Sum</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max FS</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>RefN</label>
+                    <input type="checkbox" />
+                </span>
+                <h5>INDELs</h5>
+                <span>
+                    <label>Min Qual by Depth</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Min ReadPosRankSum</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max Inbreeding Coeff</label>
+                    <input type="text" />
+                </span>
+                <span>
+                    <label>Max FS</label>
+                    <input type="text" />
+                </span>
+                <h3>Annotation:</h3>
+                <span>
+                    <label>ID field</label>
+                    <select>
+                        <option>DBSNP 137</option>
+                        <option>None</option>
+                    </select><br />
+                </span>
+                <span>
+                    <label>VEP</label>
+                    <input type="checkbox" /><br />
+                </span>
+            </div>
+            <div id="imputation">
+                <h2>Imputation Options</h2>
+                Do it yourself.<br />
+            </div>
+            <input type="submit" />
+        </form>
+    </body>
 </html>
