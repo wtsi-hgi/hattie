@@ -8,8 +8,8 @@
         <title>
             HATTIE
         </title>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <style>
+        <meta charset="utf-8" />
+        <style type="text/css">
             .formdata
             {
                 display: table-cell
@@ -20,7 +20,8 @@
             }
             label
             {
-                display: table-cell
+                display: table-cell;
+                vertical-align: top;
             }
             .formdata>select,input
             {
@@ -41,12 +42,23 @@
                 </span>
                 <span>
                     <label for="processing_name">Processing Request Name:</label>
-                    <input id="processing_name" type="text" />
+                    <input id="processing_name" type="text" placeholder="request_name" required />
                 </span>
                 <span>
-                    <label for="sequencescape_name">Sequencescape Study Name</label>
-                    <select id="sequencescape_name">
+                    <label for="sequencescape_list">Sequencescape Study Name</label>
+                    <select id="sequencescape_list" multiple="">
+                        <option>SEQCAP_WGS_LA</option>
+                        <option>SEQCAP_WGS_OO</option>
                     </select>
+                    <input id="sequencescape_list_remove" type="button" value="Remove" />
+                </span>
+                <span>
+                    <label for="sequencescape_name">Study to add...</label>
+                    <input id="sequencescape_name" type="text" list="sequencescape_opt_list" placeholder="SEQCAP_WGS_BLAH" />
+                    <datalist id="sequencescape_opt_list">
+                        <option>SEQCAP_WGS_BLAH</option>
+                    </datalist>
+                    <input id="sequencescape_list_add" value="Add" type="button" />
                 </span>
                 <span>
                     <label for="project_type">Project Type:</label>
@@ -60,12 +72,12 @@
                 <span>
                     <label for="target_select">Please select either existing target file</label>
                     <select id="target_select">
+                        <option>OMNI 2.5M</option>
                     </select>
                 </span>
                 <span>
                     <label for="target_file">or upload a target file</label>
                     <input id="target_file" type="file" />
-                </span>
                 </span>
                 <span>
                     <label for="variant_calling_requested">Do you require variants to be called?</label>
@@ -109,31 +121,31 @@
                 <h5>SNPs</h5>
                 <span>
                     <label>Min Depth</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max Qual by Depth</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max Mapping Quality</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Min FS</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Min Haplotype Score</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max MQ Rank Sum</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max FS</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>RefN</label>
@@ -142,19 +154,19 @@
                 <h5>INDELs</h5>
                 <span>
                     <label>Min Qual by Depth</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Min ReadPosRankSum</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max Inbreeding Coeff</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <span>
                     <label>Max FS</label>
-                    <input type="text" />
+                    <input type="number" />
                 </span>
                 <h3>Annotation:</h3>
                 <span>
