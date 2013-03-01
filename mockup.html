@@ -96,6 +96,19 @@
             </div>
             <div id="improvement" class="formdata">
                 <h2>BAM Improvement</h2>
+                <span>
+                    <label for="known_sites_for_realign">Known INDELs for realignment</label>
+                    <select id="known_sites_for_realign" multiple="multiple">
+                        <option>Mills-Devine</option>
+                        <option>1000G low coverage</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="known_sites_for_bqsr">Known SNPs for BQSR</label>
+                    <select id="known_sites_for_bqsr" multiple="multiple">
+                        <option>dbSNP 137</option>
+                    </select>
+                </span>
                 <h3>Lane-Plex Auto QC Parameters</h3>
                 <span>
                     <label for="auto_qc_duplicate_read_percentage">Max Duplicate Read Percentage</label>
@@ -228,7 +241,7 @@
                 <span>
                     <label>ID field</label>
                     <select>
-                        <option>DBSNP 137</option>
+                        <option>dbSNP 137</option>
                         <option>None</option>
                     </select><br />
                 </span>
