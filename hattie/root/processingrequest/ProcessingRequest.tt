@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+     Copyright (c) 2013 Genome Research Limited.
+     This file is released under the GPL version 3 detailed in the LICENSE file.
+     -->
+    <head>
+        <title>
+            HATTIE
+        </title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            .formdata
+            {
+                display: table-cell
+            }
+            .formdata>span
+            {
+                display: table-row
+            }
+            label
+            {
+                display: table-cell;
+                vertical-align: top;
+            }
+            .formdata>select,input
+            {
+                display: table-cell
+            }
+            
+            </style>
+    </head>
+    <body>
+        <h1>Create/Edit Processing Request</h1>
+        <form>
+            <div class="formdata">
+                <span>
+                    <label>HGI Project Name:</label>
+                    <select id="project_name">
+                        <option>Lorem Ipsum</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="processing_name">Processing Request Name:</label>
+                    <input id="processing_name" type="text" placeholder="request_name" required />
+                </span>
+                <span>
+                    <label for="sequencescape_list">Sequencescape Study Name</label>
+                    <select id="sequencescape_list" multiple="">
+                        <option>SEQCAP_WGS_LA</option>
+                        <option>SEQCAP_WGS_OO</option>
+                    </select>
+                    <input id="sequencescape_list_remove" type="button" value="Remove" />
+                </span>
+                <span>
+                    <label for="sequencescape_name">Study to add...</label>
+                    <input id="sequencescape_name" type="text" list="sequencescape_opt_list" placeholder="SEQCAP_WGS_BLAH" />
+                    <datalist id="sequencescape_opt_list">
+                        <option>SEQCAP_WGS_BLAH</option>
+                    </datalist>
+                    <input id="sequencescape_list_add" value="Add" type="button" />
+                </span>
+                <span>
+                    <label for="project_type">Project Type:</label>
+                    <select id="project_type">
+                        <option>Select...</option>
+                        <option>WGS</option>
+                        <option>WES</option>
+                        <option>Targeted Resequencing</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="target_select">Please select either existing target file</label>
+                    <select id="target_select">
+                        <option>OMNI 2.5M</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="target_file">or upload a target file</label>
+                    <input id="target_file" type="file" />
+                </span>
+                <span>
+                    <label for="variant_calling_requested">Do you require variants to be called?</label>
+                    <select id="variant_calling_requested">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="imputation_requested">Do you require imputation?</label>
+                    <select id="imputation_requested">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+            </div>
+            <div id="improvement" class="formdata">
+                <h2>BAM Improvement</h2>
+                <span>
+                    <label for="known_sites_for_realign">Known INDELs for realignment</label>
+                    <select id="known_sites_for_realign" multiple="multiple">
+                        <option>Mills-Devine</option>
+                        <option>1000G low coverage</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="known_sites_for_bqsr">Known SNPs for BQSR</label>
+                    <select id="known_sites_for_bqsr" multiple="multiple">
+                        <option>dbSNP 137</option>
+                    </select>
+                </span>
+                <h3>Lane-Plex Auto QC Parameters</h3>
+                <span>
+                    <label for="auto_qc_duplicate_read_percentage">Max Duplicate Read Percentage</label>
+                    <input id="auto_qc_duplicate_read_percentage" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_error_rate">Max Error Rate</label>
+                    <input id="auto_qc_error_rate" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_gtype_regex">Allowed Genotype Regex</label>
+                    <input id="auto_qc_gtype_regex" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_indel_percentage_deviation">Maximum Indel Percentage Deviation from baseline</label>
+                    <input id="auto_qc_indel_percentage_deviation" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_insert_peak_reads">Max Insert Peak Reads</label>
+                    <input id="auto_qc_insert_peak_reads" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_insert_peak_window">Insert Peak Window Size</label>
+                    <input id="auto_qc_insert_peak_window" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_mapped_base_percentage">Minimum Mapped Base Percentage</label>
+                    <input id="auto_qc_mapped_base_percentage" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_mapped_reads_properly_paired_percentage">Min Mapped Reads Properly Paired Percentage</label>
+                    <input id="auto_qc_mapped_reads_properly_paired_percentage" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_max_ic_above_median">Max ic above median</label>
+                    <input id="auto_qc_max_ic_above_median" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_max_ins_to_del_ratio">Max ins to del ratio</label>
+                    <input id="auto_qc_max_ins_to_del_ratio" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_min_ins_to_del_ratio">Min ins to del ratio</label>
+                    <input id="auto_qc_min_ins_to_del_ratio" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_overlapping_base_duplicate_percent">Max Duplicates Caused by Overlapping Base Percent</label>
+                    <input id="auto_qc_overlapping_base_duplicate_percent" type="number" />
+                </span>
+                <span>
+                    <label for="auto_qc_qual_contig_cycle_dropoff">Max Contiguious Quality Drop Off (per cycle)</label>
+                    <input id="auto_qc_qual_contig_cycle_dropoff" type="number" />
+                </span>
+            </div>
+            <div id="wgs">
+            </div>
+            <div id="exome">
+            </div>
+            <div id="variant_calling" class="formdata">
+                <h2>Variant Calling</h2>
+                <h3>Samtools and bcftools options</h3>
+                
+                <h3>Filtering Options</h3>
+                <span>
+                    <label>Do you wish to use VQSR Filtering?</label>
+                    <select>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </span>
+                <div id="vqsr_settings" class="formdata">
+                    <h4>VQSR settings:</h4>
+                    <span>
+                        <label>Truth Sites</label>
+                        <input type="text" />
+                    </span>
+                </div>
+                <h4>Manual Filters</h4>
+                <h5>SNPs</h5>
+                <span>
+                    <label>Min Depth</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max Qual by Depth</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max Mapping Quality</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Min FS</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Min Haplotype Score</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max MQ Rank Sum</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max FS</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>RefN</label>
+                    <input type="checkbox" />
+                </span>
+                <h5>INDELs</h5>
+                <span>
+                    <label>Min Qual by Depth</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Min ReadPosRankSum</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max Inbreeding Coeff</label>
+                    <input type="number" />
+                </span>
+                <span>
+                    <label>Max FS</label>
+                    <input type="number" />
+                </span>
+                <h3>Annotation:</h3>
+                <span>
+                    <label>ID field</label>
+                    <select>
+                        <option>dbSNP 137</option>
+                        <option>None</option>
+                    </select><br />
+                </span>
+                <span>
+                    <label>VEP</label>
+                    <input type="checkbox" /><br />
+                </span>
+            </div>
+            <div id="imputation">
+                <h2>Imputation Options</h2>
+                Do it yourself.<br />
+            </div>
+            <input type="submit" />
+        </form>
+    </body>
+</html>
