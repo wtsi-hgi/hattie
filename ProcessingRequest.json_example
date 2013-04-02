@@ -1,0 +1,76 @@
+{
+	"project":"uganda",
+	"name":"ds_01",
+	"project_type":"WGS",
+	"studies":
+	[
+		{
+			"name":"SEQCAP_WGS_Uganda",
+			"id":"1234"
+		}
+	],
+	"target":"OMNI 2.5M",
+	"autoqc" :
+	{
+		"duplicate read percentage" : { "max" : { "failed" : 3 } },
+ 		"error rate" : { "max" : { "failed" : 0.02 } },
+ 		"gtype regex" : "(^unchecked)|(^unconfirmed)|(^wrong)|(^confirmed)",
+		"indel percentage deviation" : { "max" : { "failed" : 10, "warning" : 3 } },
+		"insert peak reads" : { "window" : 25, "reads" : 80 },
+		"mapped base percentage" : { "min" : { "failed" : 90 } },
+		"mapped reads properly paired percentage" : { "min" : { "failed" : 80 } },
+		"ic above median" : { "max" : { "failed" : 8 } },
+		"ins to del ratio" : { "max" : { "failed" : 0.82 }, "min" : { "failed" : 0.68 } },
+		"overlapping base duplicate percent" : { "max" : { "failed" : 4 } },
+		"qual contig cycle dropoff" : { "max" : { "failed" : 10, "warning" : 5 } }
+	},
+	"improvement":
+	{
+		"known_indels":[],
+		"known_snps":[]
+	},
+	"variant calling":
+	{
+		"manual filter" :
+		{
+			"snps" :
+			{
+				"DP" : { "min" : 1 },
+				"QD" : { "max" : -4 },
+				"MQ" : { "max" : 40 },
+				"FS" : { "min" : 0, "max" : 1 },
+				"HaplotypeScore" : { "min" : 9 },
+				"MQRankSum" : { "max" : 4 },
+				"RefN" : { "present" : true}
+			},
+			"indels" :
+			{
+				"QD" : { "min" : -4 },
+				"ReadPosRankSum" : { "min" : 2 },
+				"InbreedingCoeff" : { "max" : 3 },
+				"FS" : { "max" : 4 }
+			}
+		},
+		"VQSR" :
+		{
+			"sites":
+			[
+				{
+					"name" : "hapmap 3.3",
+					"truth" : true,
+					"training" : true,
+					"known" : true
+				}
+			],
+			"target titv" : 2.15,
+			"ts tranches" : [90.0, 99.0, 99.9] 
+		},
+		"id field" : "dbSNP 137 - Homo Sapiens",
+		"VEP" : { }
+	},
+	"imputation":
+	{
+		"imputation_mode":"both",
+		"imputation_reference" : []
+	}
+}
