@@ -1,7 +1,7 @@
 {
 	"project":"uganda",
 	"name":"ds_01",
-	"project_type":"WGS",
+	"request_type":"WGS",
 	"studies":
 	[
 		{
@@ -13,8 +13,8 @@
 	"autoqc" :
 	{
 		"duplicate read percentage" : { "max" : { "failed" : 3 } },
- 		"error rate" : { "max" : { "failed" : 0.02 } },
- 		"gtype regex" : "(^unchecked)|(^unconfirmed)|(^wrong)|(^confirmed)",
+		"error rate" : { "max" : { "failed" : 0.02 } },
+		"gtype regex" : "(^unchecked)|(^unconfirmed)|(^wrong)|(^confirmed)",
 		"indel percentage deviation" : { "max" : { "failed" : 10, "warning" : 3 } },
 		"insert peak reads" : { "window" : 25, "reads" : 80 },
 		"mapped base percentage" : { "min" : { "failed" : 90 } },

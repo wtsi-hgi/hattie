@@ -1,28 +1,62 @@
 {
 	"type":"object",
-	"$schema": "http://json-schema.org/draft-03/schema",
+	"$schema": "http://json-schema.org/draft-04/schema",
 	"id": "http://www.sanger.ac.uk/groups/hgi/schema#",
-	"required":true,
+	"required":["project","name","request_type","studies"],
 	"properties":{
+		"project": {
+			"type":"string",
+			"id": "project"
+		},
+		"name": {
+			"type":"string",
+			"id": "name"
+		},
+		"request_type": {
+			"type":"string",
+			"id": "request_type"
+		},
+		"studies": {
+			"type":"array",
+			"id": "studies",
+			"items":
+				{
+					"type":"object",
+					"id": "0",
+					"properties":{
+						"id": {
+							"type":"string",
+							"id": "id"
+						},
+						"name": {
+							"type":"string",
+							"id": "name"
+						}
+					}
+				}
+			
+
+		},
+		"target": {
+			"type":"string",
+			"id": "target"
+		},
 		"autoqc": {
 			"type":"object",
 			"id": "autoqc",
-			"required":false,
+			"required":["gtype regex"],
 			"properties":{
 				"duplicate read percentage": {
 					"type":"object",
 					"id": "duplicate_read_percentage",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -31,17 +65,14 @@
 				"error rate": {
 					"type":"object",
 					"id": "error_rate",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -49,23 +80,19 @@
 				},
 				"gtype regex": {
 					"type":"string",
-					"id": "gtype_regex",
-					"required":true
+					"id": "gtype_regex"
 				},
 				"ic above median": {
 					"type":"object",
 					"id": "ic_above_median",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -74,22 +101,18 @@
 				"indel percentage deviation": {
 					"type":"object",
 					"id": "indel_percentage_deviation",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								},
 								"warning": {
 									"type":"number",
-									"id": "warning",
-									"required":false
+									"id": "warning"
 								}
 							}
 						}
@@ -98,29 +121,24 @@
 				"ins to del ratio": {
 					"type":"object",
 					"id": "ins_to_del_ratio",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						},
 						"min": {
 							"type":"object",
 							"id": "min",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -129,34 +147,28 @@
 				"insert peak reads": {
 					"type":"object",
 					"id": "insert_peak_reads",
-					"required":false,
 					"properties":{
 						"reads": {
 							"type":"number",
-							"id": "reads",
-							"required":false
+							"id": "reads"
 						},
 						"window": {
 							"type":"number",
-							"id": "window",
-							"required":false
+							"id": "window"
 						}
 					}
 				},
 				"mapped base percentage": {
 					"type":"object",
 					"id": "mapped_base_percentage",
-					"required":false,
 					"properties":{
 						"min": {
 							"type":"object",
 							"id": "min",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -165,17 +177,14 @@
 				"mapped reads properly paired percentage": {
 					"type":"object",
 					"id": "mapped_reads_properly_paired_percentage",
-					"required":false,
 					"properties":{
 						"min": {
 							"type":"object",
 							"id": "min",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -184,17 +193,14 @@
 				"overlapping base duplicate percent": {
 					"type":"object",
 					"id": "overlapping_base_duplicate_percent",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								}
 							}
 						}
@@ -203,22 +209,18 @@
 				"qual contig cycle dropoff": {
 					"type":"object",
 					"id": "qual_contig_cycle_dropoff",
-					"required":false,
 					"properties":{
 						"max": {
 							"type":"object",
 							"id": "max",
-							"required":false,
 							"properties":{
 								"failed": {
 									"type":"number",
-									"id": "failed",
-									"required":false
+									"id": "failed"
 								},
 								"warning": {
 									"type":"number",
-									"id": "warning",
-									"required":false
+									"id": "warning"
 								}
 							}
 						}
@@ -229,126 +231,54 @@
 		"improvement": {
 			"type":"object",
 			"id": "improvement",
-			"required":false,
 			"properties":{
 				"known_indels": {
 					"type":"array",
-					"id": "known_indels",
-					"required":false
+					"id": "known_indels"
 				},
 				"known_snps": {
 					"type":"array",
-					"id": "known_snps",
-					"required":false
+					"id": "known_snps"
 				}
 			}
-		},
-		"imputation": {
-			"type":"object",
-			"id": "imputation",
-			"required":false,
-			"properties":{
-				"imputation_mode": {
-					"type":"string",
-					"id": "imputation_mode",
-					"required":true
-				},
-				"imputation_reference": {
-					"type":"array",
-					"id": "imputation_reference",
-					"required":false
-				}
-			}
-		},
-		"name": {
-			"type":"string",
-			"id": "name",
-			"required":true
-		},
-		"project_type": {
-			"type":"string",
-			"id": "project_type",
-			"required":true
-		},
-		"project": {
-			"type":"string",
-			"id": "project",
-			"required":true
-		},
-		"studies": {
-			"type":"array",
-			"id": "studies",
-			"required":true,
-			"items":
-				{
-					"type":"object",
-					"id": "0",
-					"required":false,
-					"properties":{
-						"id": {
-							"type":"string",
-							"id": "id",
-							"required":false
-						},
-						"name": {
-							"type":"string",
-							"id": "name",
-							"required":false
-						}
-					}
-				}
-			
-
-		},
-		"target": {
-			"type":"string",
-			"id": "target",
-			"required":false
 		},
 		"variant calling": {
 			"type":"object",
 			"id": "variant_calling",
-			"required":false,
 			"properties":{
 				"VEP": {
 					"type":"object",
-					"id": "VEP",
-					"required":false
+					"id": "VEP"
 				},
 				"VQSR": {
 					"type":"object",
 					"id": "VQSR",
-					"required":false,
+					"required":["sites"],
 					"properties":{
 						"sites": {
 							"type":"array",
 							"id": "sites",
-							"required":true,
 							"items":
 								{
 									"type":"object",
 									"id": "0",
-									"required":false,
+									"required":["name","truth","training","known"],
 									"properties":{
-										"known": {
-											"type":"boolean",
-											"id": "known",
-											"required":false
-										},
 										"name": {
 											"type":"string",
-											"id": "name",
-											"required":false
-										},
-										"training": {
-											"type":"boolean",
-											"id": "training",
-											"required":false
+											"id": "name"
 										},
 										"truth": {
 											"type":"boolean",
-											"id": "truth",
-											"required":false
+											"id": "truth"
+										},
+										"training": {
+											"type":"boolean",
+											"id": "training"
+										},
+										"known": {
+											"type":"boolean",
+											"id": "known"
 										}
 									}
 								}
@@ -357,84 +287,68 @@
 						},
 						"target titv": {
 							"type":"number",
-							"id": "target_titv",
-							"required":false
+							"id": "target_titv"
 						},
 						"ts tranches": {
 							"type":"array",
 							"id": "ts_tranches",
-							"required":false,
-							"items":
+									"items":
 								{
 									"type":"number",
-									"id": "0",
-									"required":false
+									"id": "0"
 								}
-							
-
 						}
 					}
 				},
 				"id field": {
 					"type":"string",
-					"id": "id_field",
-					"required":false
+					"id": "id_field"
 				},
 				"manual filter": {
 					"type":"object",
 					"id": "manual_filter",
-					"required":false,
 					"properties":{
 						"indels": {
 							"type":"object",
 							"id": "indels",
-							"required":false,
-							"properties":{
+									"properties":{
 								"FS": {
 									"type":"object",
 									"id": "FS",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										}
 									}
 								},
 								"InbreedingCoeff": {
 									"type":"object",
 									"id": "InbreedingCoeff",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										}
 									}
 								},
 								"QD": {
 									"type":"object",
 									"id": "QD",
-									"required":false,
 									"properties":{
 										"min": {
 											"type":"number",
-											"id": "min",
-											"required":false
+											"id": "min"
 										}
 									}
 								},
 								"ReadPosRankSum": {
 									"type":"object",
 									"id": "ReadPosRankSum",
-									"required":false,
 									"properties":{
 										"min": {
 											"type":"number",
-											"id": "min",
-											"required":false
+											"id": "min"
 										}
 									}
 								}
@@ -443,100 +357,99 @@
 						"snps": {
 							"type":"object",
 							"id": "snps",
-							"required":false,
-							"properties":{
+									"properties":{
 								"DP": {
 									"type":"object",
 									"id": "DP",
-									"required":false,
 									"properties":{
 										"min": {
 											"type":"number",
-											"id": "min",
-											"required":false
+											"id": "min"
 										}
 									}
 								},
 								"FS": {
 									"type":"object",
 									"id": "FS",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										},
 										"min": {
 											"type":"number",
-											"id": "min",
-											"required":false
+											"id": "min"
 										}
 									}
 								},
 								"HaplotypeScore": {
 									"type":"object",
 									"id": "HaplotypeScore",
-									"required":false,
 									"properties":{
 										"min": {
 											"type":"number",
-											"id": "min",
-											"required":false
+											"id": "min"
 										}
 									}
 								},
 								"MQRankSum": {
 									"type":"object",
 									"id": "MQRankSum",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										}
 									}
 								},
 								"MQ": {
 									"type":"object",
 									"id": "MQ",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										}
 									}
 								},
 								"QD": {
 									"type":"object",
 									"id": "QD",
-									"required":false,
 									"properties":{
 										"max": {
 											"type":"number",
-											"id": "max",
-											"required":false
+											"id": "max"
 										}
 									}
 								},
 								"RefN": {
 									"type":"object",
 									"id": "RefN",
-									"required":false,
 									"properties":{
 										"present": {
 											"type":"boolean",
-											"id": "present",
-											"required":false
+											"id": "present"
 										}
 									}
 								}
 							}
 						}
 					}
+				}
+			}
+		},
+		"imputation": {
+			"type":"object",
+			"id": "imputation",
+			"required":["imputation_mode"],
+			"properties":{
+				"imputation_mode": {
+					"type":"string",
+					"id": "imputation_mode"
+				},
+				"imputation_reference": {
+					"type":"array",
+					"id": "imputation_reference"
 				}
 			}
 		}
