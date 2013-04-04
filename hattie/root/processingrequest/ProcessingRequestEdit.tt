@@ -33,65 +33,36 @@
     <body>
         <h1>Create/Edit Processing Request</h1>
         <form>
+            [% form.errors.render %]
             <div class="formdata">
                 <span>
-                    <label>HGI Project Name:</label>
-                    <select id="project_name">
-                        <option>Lorem Ipsum</option>
-                    </select>
+                    [% form.field('project').render %]
                 </span>
                 <span>
-                    <label for="processing_name">Processing Request Name:</label>
-                    <input id="processing_name" type="text" placeholder="request_name" required />
+                    [% form.field('name').render %]
                 </span>
                 <span>
-                    <label for="sequencescape_list">Sequencescape Study Name</label>
-                    <select id="sequencescape_list" multiple="">
-                        <option>SEQCAP_WGS_LA</option>
-                        <option>SEQCAP_WGS_OO</option>
-                    </select>
-                    <input id="sequencescape_list_remove" type="button" value="Remove" />
+                    [% form.field('studies').field('study_list').render %]
+                    [% form.field('studies').field('study_remove').render %]
                 </span>
                 <span>
-                    <label for="sequencescape_name">Study to add...</label>
-                    <input id="sequencescape_name" type="text" list="sequencescape_opt_list" placeholder="SEQCAP_WGS_BLAH" />
-                    <datalist id="sequencescape_opt_list">
-                        <option>SEQCAP_WGS_BLAH</option>
-                    </datalist>
-                    <input id="sequencescape_list_add" value="Add" type="button" />
+                    [% form.field('studies').field('study_to_add').render %]
+                    [% form.field('studies').field('study_add').render %]
                 </span>
                 <span>
-                    <label for="project_type">Project Type:</label>
-                    <select id="project_type">
-                        <option>Select...</option>
-                        <option>WGS</option>
-                        <option>WES</option>
-                        <option>Targeted Resequencing</option>
-                    </select>
+                    [% form.field('request_type').render %]
                 </span>
                 <span>
-                    <label for="target_select">Please select either existing target file</label>
-                    <select id="target_select">
-                        <option>OMNI 2.5M</option>
-                    </select>
+                    [% form.field('target').field('target_list').render %]
                 </span>
                 <span>
-                    <label for="target_file">or upload a target file</label>
-                    <input id="target_file" type="file" />
+                    [% form.field('target').field('target_file').render %]
                 </span>
                 <span>
-                    <label for="variant_calling_requested">Do you require variants to be called?</label>
-                    <select id="variant_calling_requested">
-                        <option>Yes</option>
-                        <option>No</option>
-                    </select>
+                    [% form.field('call_variants').render %]
                 </span>
                 <span>
-                    <label for="imputation_requested">Do you require imputation?</label>
-                    <select id="imputation_requested">
-                        <option>Yes</option>
-                        <option>No</option>
-                    </select>
+                    [% form.field('perform_imputation').render %]
                 </span>
             </div>
             <div id="improvement" class="formdata">
@@ -254,7 +225,7 @@
                 <h2>Imputation Options</h2>
                 Do it yourself.<br />
             </div>
-            <input type="submit" />
+            [% form.field('submit').render %]
         </form>
     </body>
 </html>

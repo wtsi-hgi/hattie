@@ -1,4 +1,4 @@
-package hattie::View::ProcessingRequest;
+package hattie::View::ProcessingRequestEdit;
 use Moose;
 use namespace::autoclean;
 

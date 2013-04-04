@@ -1,5 +1,6 @@
 package hattie::Controller::ProcessingRequest;
 use Moose;
+use hattie::Form::ProcessingRequestEdit;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -29,9 +30,12 @@ sub index :Path :Args(0) {
 
 sub test :Local {
     my ( $self, $c ) = @_;
- 
+    my $pr = undef;
+    my $form = hattie::Form::ProcessingRequestEdit->new;
     $c->stash(
-              template => 'processingrequest/ProcessingRequest.tt');
+              form => $form,
+              template => 'processingrequest/ProcessingRequestEdit.tt');
+    return unless $form->process(posted => ($c->req->method eq 'POST'), item => $pr, params => $c->req->params);
 }
 
 =head1 AUTHOR
