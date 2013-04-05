@@ -12,7 +12,9 @@
         <style type="text/css">
             .formdata
             {
-                display: table-cell
+                display: table;
+                vertical-align: top;
+
             }
             .formdata>span
             {
@@ -21,14 +23,12 @@
             label
             {
                 display: table-cell;
-                vertical-align: top;
             }
             .formdata>select,input
             {
                 display: table-cell
             }
-            
-            </style>
+        </style>
     </head>
     <body>
         <h1>Create/Edit Processing Request</h1>
@@ -42,21 +42,21 @@
                     [% form.field('name').render %]
                 </span>
                 <span>
-                    [% form.field('studies').field('study_list').render %]
-                    [% form.field('studies').field('study_remove').render %]
+                    [% form.field('studies').field('list').render %]
+                    [% form.field('studies').field('remove').render %]
                 </span>
                 <span>
-                    [% form.field('studies').field('study_to_add').render %]
-                    [% form.field('studies').field('study_add').render %]
+                    [% form.field('studies').field('to_add').render %]
+                    [% form.field('studies').field('add').render %]
                 </span>
                 <span>
                     [% form.field('request_type').render %]
                 </span>
                 <span>
-                    [% form.field('target').field('target_list').render %]
+                    [% form.field('target').field('list').render %]
                 </span>
                 <span>
-                    [% form.field('target').field('target_file').render %]
+                    [% form.field('target').field('file').render %]
                 </span>
                 <span>
                     [% form.field('call_variants').render %]
@@ -68,71 +68,48 @@
             <div id="improvement" class="formdata">
                 <h2>BAM Improvement</h2>
                 <span>
-                    <label for="known_sites_for_realign">Known INDELs for realignment</label>
-                    <select id="known_sites_for_realign" multiple="multiple">
-                        <option>Mills-Devine</option>
-                        <option>1000G low coverage</option>
-                    </select>
+                    [% form.field('known_sites_realign').field('list').render %]
+                    [% form.field('known_sites_realign').field('remove').render %]
                 </span>
                 <span>
-                    <label for="known_sites_for_bqsr">Known SNPs for BQSR</label>
-                    <select id="known_sites_for_bqsr" multiple="multiple">
-                        <option>dbSNP 137</option>
-                    </select>
+                    [% form.field('known_sites_realign').field('to_add').render %]
+                    [% form.field('known_sites_realign').field('add').render %]
+                </span>
+                <span>
+                    [% form.field('known_sites_bqsr').field('list').render %]
+                    [% form.field('known_sites_bqsr').field('remove').render %]
+                </span>
+                <span>
+                    [% form.field('known_sites_bqsr').field('to_add').render %]
+                    [% form.field('known_sites_bqsr').field('add').render %]
                 </span>
                 <h3>Lane-Plex Auto QC Parameters</h3>
                 <span>
-                    <label for="auto_qc_duplicate_read_percentage">Max Duplicate Read Percentage</label>
-                    <input id="auto_qc_duplicate_read_percentage" type="number" />
+                    [% form.field('auto_qc_gtype_regex').render %]
                 </span>
                 <span>
-                    <label for="auto_qc_error_rate">Max Error Rate</label>
-                    <input id="auto_qc_error_rate" type="number" />
+                    [% form.field('auto_qc_insert_peak_window').render %]
                 </span>
-                <span>
-                    <label for="auto_qc_gtype_regex">Allowed Genotype Regex</label>
-                    <input id="auto_qc_gtype_regex" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_indel_percentage_deviation">Maximum Indel Percentage Deviation from baseline</label>
-                    <input id="auto_qc_indel_percentage_deviation" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_insert_peak_reads">Max Insert Peak Reads</label>
-                    <input id="auto_qc_insert_peak_reads" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_insert_peak_window">Insert Peak Window Size</label>
-                    <input id="auto_qc_insert_peak_window" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_mapped_base_percentage">Minimum Mapped Base Percentage</label>
-                    <input id="auto_qc_mapped_base_percentage" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_mapped_reads_properly_paired_percentage">Min Mapped Reads Properly Paired Percentage</label>
-                    <input id="auto_qc_mapped_reads_properly_paired_percentage" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_max_ic_above_median">Max ic above median</label>
-                    <input id="auto_qc_max_ic_above_median" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_max_ins_to_del_ratio">Max ins to del ratio</label>
-                    <input id="auto_qc_max_ins_to_del_ratio" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_min_ins_to_del_ratio">Min ins to del ratio</label>
-                    <input id="auto_qc_min_ins_to_del_ratio" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_overlapping_base_duplicate_percent">Max Duplicates Caused by Overlapping Base Percent</label>
-                    <input id="auto_qc_overlapping_base_duplicate_percent" type="number" />
-                </span>
-                <span>
-                    <label for="auto_qc_qual_contig_cycle_dropoff">Max Contiguious Quality Drop Off (per cycle)</label>
-                    <input id="auto_qc_qual_contig_cycle_dropoff" type="number" />
-                </span>
+                <div>
+                    <table>
+                    <thead>
+                        <tr><td rowspan="2">Field</td><td colspan="2">Error</td><td colspan="2">Warning</td></tr>
+                        <tr><td>Minimum</td><td>Maximum</td><td>Minimum</td><td>Maximum</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th>Duplicate Read Percentage</th><td>Min</td><td><input id="auto_qc_duplicate_read_percentage" type="number" /></td><td>Min</td><td><input id="auto_qc_duplicate_read_percentage" type="number" /></td></tr>
+                        <tr><th>Error Rate</th><td>Min</td><td><input id="auto_qc_error_rate" type="number" /></td><td>Min</td><td><input id="auto_qc_error_rate" type="number" /></td></tr>
+                        <tr><th>Indel Percentage Deviation from baseline</th><td>Min</td><td><input id="auto_qc_indel_percentage_deviation" type="number" /></td><td>Min</td><td><input id="auto_qc_indel_percentage_deviation" type="number" /></td></tr>
+                        <tr><th>Insert Peak Reads</th><td>Min</td><td><input id="auto_qc_insert_peak_reads" type="number" /></td><td>Min</td><td><input id="auto_qc_insert_peak_reads" type="number" /></td></tr>
+                        <tr><th>Mapped Base Percentage</th><td><input id="auto_qc_mapped_base_percentage" type="number" /></td><td>Max</td><td><input id="auto_qc_mapped_base_percentage" type="number" /></td><td>Max</td></tr>
+                        <tr><th>Mapped Reads Properly Paired Percentage</th><td><input id="auto_qc_mapped_reads_properly_paired_percentage" type="number" /></td><td>Max</td><td><input id="auto_qc_mapped_reads_properly_paired_percentage" type="number" /></td><td>Max</td></tr>
+                        <tr><th>IC above median</th><td>Min</td><td><input id="auto_qc_max_ic_above_median" type="number" /></td><td>Min</td><td><input id="auto_qc_max_ic_above_median" type="number" /></td></tr>
+                        <tr><th>Ins to del ratio</th><td><input id="auto_qc_min_ins_to_del_ratio" type="number" /></td><td><input id="auto_qc_max_ins_to_del_ratio" type="number" /></td><td><input id="auto_qc_min_ins_to_del_ratio" type="number" /></td><td><input id="auto_qc_max_ins_to_del_ratio" type="number" /></td></tr>
+                        <tr><th>Duplicates Caused by Overlapping Base Percent</th><td>Min</td><td><input id="auto_qc_overlapping_base_duplicate_percent" type="number" /></td><td>Min</td><td><input id="auto_qc_overlapping_base_duplicate_percent" type="number" /></td></tr>
+                        <tr><th>Contiguious Quality Drop Off (per cycle)</th><td>Min</td><td><input id="auto_qc_qual_contig_cycle_dropoff" type="number" /></td><td>Min</td><td><input id="auto_qc_qual_contig_cycle_dropoff" type="number" /></td></tr>
+                    </tbody>
+                    </table>
+                </div>
             </div>
             <div id="wgs">
             </div>
@@ -144,86 +121,96 @@
                 
                 <h3>Filtering Options</h3>
                 <span>
-                    <label>Do you wish to use VQSR Filtering?</label>
-                    <select>
-                        <option>Yes</option>
-                        <option>No</option>
-                    </select>
+                    [% form.field('vqsr_enable').render %]
                 </span>
                 <div id="vqsr_settings" class="formdata">
                     <h4>VQSR settings:</h4>
                     <span>
-                        <label>Truth Sites</label>
-                        <input type="text" />
+                        [% form.field('vqsr_snp_sites').render %]
+                        <table>
+                        <thead>
+                            <tr><td>Reference</td><td>Prior</td><td>Truth</td><td>Training</td><td>Known</td><td>Remove?</td></tr>
+                        </thead>
+                        <tbody>
+                        <tr><th>Hapmap 3.3</th><td>8</td><td>1</td><td>1</td><td>1</td><td><input type="button" value="Remove" /></td></tr>
+                        <tr><th>1000G</th><td>8</td><td>0</td><td>1</td><td>1</td><td><input type="button" value="Remove" /></td></tr>
+                        <tr><th>dbSNP 137</th><td>8</td><td>0</td><td>0</td><td>1</td><td><input type="button" value="Remove" /></td></tr>
+                        </tbody>
+                        </table>
+                        <div>
+                        <label>Select Reference</label>
+                        <select type="select"></select>
+                        <label>or upload one</label>
+                        <input type="file" />
+                        <label>Prior</label>
+                        <input type="number"/>
+                        <label>Truth</label>
+                        <input type="number"/>
+                        <label>Training</label>
+                        <input type="number"/>
+                        <label>Known</label>
+                        <input type="number"/>
+                        <input type="button" value="Add" />
+                        </div>
+                    </span>
+                    <span>
+                        [% form.field('vqsr_snp_initial_tsfilter').render %]
+                    </span>
+                    <span>
+                        [% form.field('vqsr_indel_sites').render %]
+                    </span>
+                    <span>
+                        [% form.field('vqsr_indel_initial_tsfilter').render %]
                     </span>
                 </div>
                 <h4>Manual Filters</h4>
                 <h5>SNPs</h5>
-                <span>
-                    <label>Min Depth</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max Qual by Depth</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max Mapping Quality</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Min FS</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Min Haplotype Score</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max MQ Rank Sum</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max FS</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>RefN</label>
-                    <input type="checkbox" />
-                </span>
+                <table>
+                <thead>
+                <tr><td>Annotation</td><td>Minimum</td><td>Maximum</td></tr>
+                </thead>
+                <tbody>
+                <tr><td>DP</td><td><input type="number" /></td><td>Max</td></tr>
+                <tr><td>QD</td><td>Min</td><td><input type="number" /></td></tr>
+                <tr><td>MQ</td><td>Min</td><td><input type="number" /></td></tr>
+                <tr><td>FS</td><td><input type="number" /></td><td>Max</td></tr>
+                <tr><td>HaplotypeScore</td><td><input type="number" /></td><td>Max</td></tr>
+                <tr><td>MQRankSum</td><td>Min</td><td><input type="number" /></td></tr>
+                <tr><td>FS</td><td>Min</td><td><input type="number" /></td></tr>
+                <tr><td>RefN</td><td colspan="2"><input type="checkbox" /></td></tr>
+                </tbody>
+                </table>                
                 <h5>INDELs</h5>
-                <span>
-                    <label>Min Qual by Depth</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Min ReadPosRankSum</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max Inbreeding Coeff</label>
-                    <input type="number" />
-                </span>
-                <span>
-                    <label>Max FS</label>
-                    <input type="number" />
-                </span>
+                <table>
+                <thead>
+                <tr><td>Annotation</td><td>Minimum</td><td>Maximum</td></tr>
+                </thead>
+                <tbody>
+                <tr><td>QD</td><td><input type="number" /></td><td>Max</td></tr>
+                <tr><td>ReadPosRankSum</td><td><input type="number" /></td><td>Max</td></tr>
+                <tr><td>InbreedingCoeff</td><td>Min</td><td><input type="number" /></td></tr>
+                <tr><td>FS</td><td>Min</td><td><input type="number" /></td></tr>
+                </tbody>
+                </table>
                 <h3>Annotation:</h3>
                 <span>
-                    <label>ID field</label>
-                    <select>
-                        <option>dbSNP 137</option>
-                        <option>None</option>
-                    </select><br />
+                    [% form.field('id_field').render %]
                 </span>
                 <span>
-                    <label>VEP</label>
-                    <input type="checkbox" /><br />
+                    [% form.field('annot_vep').render %]
                 </span>
             </div>
-            <div id="imputation">
+            <div id="imputation" class="formdata">
                 <h2>Imputation Options</h2>
-                Do it yourself.<br />
+                Please do this yourself, we collect this information for statistical purposes only at present.<br />
+                <span>
+                    [% form.field('imputation_reference').field('list').render %]
+                    [% form.field('imputation_reference').field('remove').render %]
+                </span>
+                <span>
+                    [% form.field('imputation_reference').field('to_add').render %]
+                    [% form.field('imputation_reference').field('add').render %]
+                </span>
             </div>
             [% form.field('submit').render %]
         </form>
