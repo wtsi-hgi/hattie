@@ -28,7 +28,29 @@ sub index :Path :Args(0) {
     $c->response->body('Matched hattie::Controller::ProcessingRequest in ProcessingRequest.');
 }
 
-sub test :Local {
+sub create :Local :Args(0) {
+    my ( $self, $c ) = @_;
+    my $id = 1;
+    
+    $c->response->redirect($c->uri_for_action($self->action_for('edit'), [$id]),302);
+}
+
+sub pr :PathPrefix Chained('/') CaptureArgs(1) {
+    my ( $self, $c ) = @_;
+
+    my $pr = undef;
+    $c->stash->{pr} = $pr;
+    $c->log->debug('*** INSIDE {pr} METHOD ***');
+
+}
+
+sub view :Chained('pr') PathPart() Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->response->body('Matched hattie::Controller::ProcessingRequest::view in ProcessingRequest.');
+}
+
+sub edit :Chained('pr') PathPart() Args(0) {
     my ( $self, $c ) = @_;
     my $pr = undef;
     my $form = hattie::Form::ProcessingRequestEdit->new;
@@ -36,6 +58,16 @@ sub test :Local {
               form => $form,
               template => 'processingrequest/ProcessingRequestEdit.tt');
     return unless $form->process(posted => ($c->req->method eq 'POST'), item => $pr, params => $c->req->params);
+    $c->log->debug('*** edit processed ***');
+
+    $c->response->redirect( $self->uri_for_action($self->action_for('index') ), 302 );
+}
+
+sub debugdump :Chained('pr') Args(0) {
+    my ( $self, $c ) = @_;
+
+    my $pr = undef;
+    $c->response->body('Matched hattie::Controller::ProcessingRequest::debugdump in ProcessingRequest.');
 }
 
 =head1 AUTHOR
