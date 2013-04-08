@@ -30,7 +30,11 @@ sub index :Path :Args(0) {
 
 sub create :Local :Args(0) {
     my ( $self, $c ) = @_;
-    my $id = 1;
+    
+    $DB::single = 1;
+    my $doc = $c->model->newDB('test')->newDoc('bar')->create;
+
+    my $id = $doc->{dahut};
     
     $c->response->redirect($c->uri_for_action($self->action_for('edit'), [$id]),302);
 }
@@ -38,7 +42,7 @@ sub create :Local :Args(0) {
 sub pr :PathPrefix Chained('/') CaptureArgs(1) {
     my ( $self, $c ) = @_;
 
-    my $pr = undef;
+    my $pr = $c->model->newDB('test')->newDoc('bar')->retrieve;
     $c->stash->{pr} = $pr;
     $c->log->debug('*** INSIDE {pr} METHOD ***');
 
