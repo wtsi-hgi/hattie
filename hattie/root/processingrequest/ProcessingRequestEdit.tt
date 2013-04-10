@@ -33,7 +33,6 @@
     <body>
         <h1>Create/Edit Processing Request</h1>
         <form>
-            [% form.errors.render %]
             <div class="formdata">
                 <span>
                     [% form.field('project').render %]
@@ -42,53 +41,53 @@
                     [% form.field('name').render %]
                 </span>
                 <span>
-                    [% form.field('studies').field('list').render %]
-                    [% form.field('studies').field('remove').render %]
+                    [% # form.field('studies').field('list').render %]
+                    [% # form.field('studies').field('remove').render %]
                 </span>
                 <span>
-                    [% form.field('studies').field('to_add').render %]
-                    [% form.field('studies').field('add').render %]
+                    [% # form.field('studies').field('to_add').render %]
+                    [% # form.field('studies').field('add').render %]
                 </span>
                 <span>
                     [% form.field('request_type').render %]
                 </span>
                 <span>
-                    [% form.field('target').field('list').render %]
+                    [% # form.field('target').field('list').render %]
                 </span>
                 <span>
-                    [% form.field('target').field('file').render %]
+                    [% # form.field('target').field('file').render %]
                 </span>
                 <span>
-                    [% form.field('call_variants').render %]
+                    [% # form.field('call_variants').render %]
                 </span>
                 <span>
-                    [% form.field('perform_imputation').render %]
+                    [% # form.field('perform_imputation').render %]
                 </span>
             </div>
             <div id="improvement" class="formdata">
                 <h2>BAM Improvement</h2>
                 <span>
-                    [% form.field('known_sites_realign').field('list').render %]
-                    [% form.field('known_sites_realign').field('remove').render %]
+                    [% # form.field('known_sites_realign').field('list').render %]
+                    [% # form.field('known_sites_realign').field('remove').render %]
                 </span>
                 <span>
-                    [% form.field('known_sites_realign').field('to_add').render %]
-                    [% form.field('known_sites_realign').field('add').render %]
+                    [% # form.field('known_sites_realign').field('to_add').render %]
+                    [% # form.field('known_sites_realign').field('add').render %]
                 </span>
                 <span>
-                    [% form.field('known_sites_bqsr').field('list').render %]
-                    [% form.field('known_sites_bqsr').field('remove').render %]
+                    [% # form.field('known_sites_bqsr').field('list').render %]
+                    [% # form.field('known_sites_bqsr').field('remove').render %]
                 </span>
                 <span>
-                    [% form.field('known_sites_bqsr').field('to_add').render %]
-                    [% form.field('known_sites_bqsr').field('add').render %]
+                    [% # form.field('known_sites_bqsr').field('to_add').render %]
+                    [% # form.field('known_sites_bqsr').field('add').render %]
                 </span>
                 <h3>Lane-Plex Auto QC Parameters</h3>
                 <span>
-                    [% form.field('auto_qc_gtype_regex').render %]
+                    [% # form.field('auto_qc_gtype_regex').render %]
                 </span>
                 <span>
-                    [% form.field('auto_qc_insert_peak_window').render %]
+                    [% # form.field('auto_qc_insert_peak_window').render %]
                 </span>
                 <div>
                     <table>
@@ -121,12 +120,12 @@
                 
                 <h3>Filtering Options</h3>
                 <span>
-                    [% form.field('vqsr_enable').render %]
+                    [% # form.field('vqsr_enable').render %]
                 </span>
                 <div id="vqsr_settings" class="formdata">
                     <h4>VQSR settings:</h4>
                     <span>
-                        [% form.field('vqsr_snp_sites').render %]
+                        [% # form.field('vqsr_snp_sites').render %]
                         <table>
                         <thead>
                             <tr><td>Reference</td><td>Prior</td><td>Truth</td><td>Training</td><td>Known</td><td>Remove?</td></tr>
@@ -154,13 +153,13 @@
                         </div>
                     </span>
                     <span>
-                        [% form.field('vqsr_snp_initial_tsfilter').render %]
+                        [% # form.field('vqsr_snp_initial_tsfilter').render %]
                     </span>
                     <span>
-                        [% form.field('vqsr_indel_sites').render %]
+                        [% # form.field('vqsr_indel_sites').render %]
                     </span>
                     <span>
-                        [% form.field('vqsr_indel_initial_tsfilter').render %]
+                        [% # form.field('vqsr_indel_initial_tsfilter').render %]
                     </span>
                 </div>
                 <h4>Manual Filters</h4>
@@ -194,25 +193,25 @@
                 </table>
                 <h3>Annotation:</h3>
                 <span>
-                    [% form.field('id_field').render %]
+                    [% # form.field('id_field').render %]
                 </span>
                 <span>
-                    [% form.field('annot_vep').render %]
+                    [% # form.field('annot_vep').render %]
                 </span>
             </div>
             <div id="imputation" class="formdata">
                 <h2>Imputation Options</h2>
                 Please do this yourself, we collect this information for statistical purposes only at present.<br />
                 <span>
-                    [% form.field('imputation_reference').field('list').render %]
-                    [% form.field('imputation_reference').field('remove').render %]
+                    [% # form.field('imputation_reference').field('list').render %]
+                    [% # form.field('imputation_reference').field('remove').render %]
                 </span>
                 <span>
-                    [% form.field('imputation_reference').field('to_add').render %]
-                    [% form.field('imputation_reference').field('add').render %]
+                    [% # form.field('imputation_reference').field('to_add').render %]
+                    [% # form.field('imputation_reference').field('add').render %]
                 </span>
             </div>
-            [% form.field('submit').render %]
+            [% # form.field('submit').render %]
         </form>
     </body>
 </html>

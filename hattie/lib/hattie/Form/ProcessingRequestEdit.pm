@@ -10,17 +10,17 @@ has '+field_name_space' => ( default => 'hattie::Form::Field' );
 has '+widget_wrapper' => ( default => 'SimpleInline' );
 has '+is_html5' => ( default => 1 );
 
-has 'options_request_type' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Select...", 1 => "WGS", 2 => "WES", 3 => "Targeted"] } );
+has 'options_request_type' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Select...", 'WGS' => "WGS", 'WES' => "WES", 'Targeted' => "Targeted"] } );
 has 'options_studies_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "SEQCAP_WGS_FISH", 1 => "SEQCAP_WGS_PLAICE"]} );
-has 'options_target_list' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Please select an option...", 1 => "OMNI 2.5M", 2 => "dummy"]} );
+has 'options_target_list' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Please select an option...", "OMNI 2.5M" => "OMNI 2.5M", "dummy" => "dummy"]} );
 
 # core fields
 has_block 'core' => ( render_list => ['project', 'name', 'request_type', 'studies', 'target_block'] );
 has_field 'revision' => ( type => 'Hidden', required => 1 );
-has_field 'project' => ( label => 'HGI Project Name', type => 'NonEditable', required => 1 );
+has_field 'project' => ( label => 'HGI Project Name', type => 'Text', required => 1 );
 has_field 'name' => ( label => 'Processing Request Name', required => 1 );
 has_field 'request_type' => ( label => 'Request Type', type => 'Select', required => 1 );
-has_field 'studies' => ( type => 'AddRemListbox', list_label => 'Sequencescape Study Name', to_add_label => 'Study to add' );
+has_field 'studies' => ( type => 'AddRemListbox', list_label => 'Sequencescape Study Name', to_add_label => 'Study to add', value_field => 'studies' );
 has_field 'target' => ( list_label => 'Please select either existing target file', file_label => 'or upload a target file', type => 'ListOrFile' );
 
 # show or hide subforms

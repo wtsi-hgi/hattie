@@ -34,17 +34,16 @@ sub create :Local :Args(0) {
     $DB::single = 1;
     my $doc = $c->model->newDB('test')->newDoc('bar')->create;
 
-    my $id = $doc->{dahut};
+    my $id = $doc->{id};
     
     $c->response->redirect($c->uri_for_action($self->action_for('edit'), [$id]),302);
 }
 
 sub pr :PathPrefix Chained('/') CaptureArgs(1) {
-    my ( $self, $c ) = @_;
+    my ( $self, $c, $id ) = @_;
 
-    my $pr = $c->model->newDB('test')->newDoc('bar')->retrieve;
-    $c->stash->{pr} = $pr;
-    $c->log->debug('*** INSIDE {pr} METHOD ***');
+    my $pr = $c->model->newDB('test')->newDoc($id)->retrieve;
+    $c->stash->{pr} = $pr->data;
 
 }
 
@@ -56,7 +55,7 @@ sub view :Chained('pr') PathPart() Args(0) {
 
 sub edit :Chained('pr') PathPart() Args(0) {
     my ( $self, $c ) = @_;
-    my $pr = undef;
+    my $pr = $c->stash->{pr};
     my $form = hattie::Form::ProcessingRequestEdit->new;
     $c->stash(
               form => $form,
