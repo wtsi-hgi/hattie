@@ -70,7 +70,7 @@
 	},
 	"imputation":
 	{
-		"imputation_mode":"both",
-		"imputation_reference" : []
+		"mode":"both",
+		"reference" : []
 	}
 }

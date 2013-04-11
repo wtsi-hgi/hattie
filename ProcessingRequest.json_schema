@@ -441,13 +441,14 @@
 		"imputation": {
 			"type":"object",
 			"id": "imputation",
-			"required":["imputation_mode"],
+			"required":["mode"],
 			"properties":{
-				"imputation_mode": {
+				"mode": {
 					"type":"string",
+					"enum": ["both","refinement","ref_imputation"],
 					"id": "imputation_mode"
 				},
-				"imputation_reference": {
+				"reference": {
 					"type":"array",
 					"id": "imputation_reference"
 				}
