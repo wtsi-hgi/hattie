@@ -62,6 +62,7 @@ sub edit :Chained('pr') PathPart() Args(0) {
               template => 'processingrequest/ProcessingRequestEdit.tt');
     return unless $form->process(posted => ($c->req->method eq 'POST'), item => $pr, params => $c->req->params);
     $c->log->debug('*** edit processed ***');
+    # need to update the DB here and potentially handle conflict situation
 
     $c->response->redirect( $self->uri_for_action($self->action_for('index') ), 302 );
 }

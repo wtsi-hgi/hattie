@@ -59,6 +59,8 @@ has_field 'annot_vep' => ( type => 'Checkbox', label => 'VEP' );
 
 # imputation
 has 'options_imputation_reference_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "1000 Genomes"]} );
+has 'options_imputation_mode' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Select...", "both" => "Both","refinement" => "Variant Refinement","ref_imputation" => "Reference Imputation"]} );
+has_field 'imputation_mode' => (type => 'Select', label => 'Mode' );
 has_field 'imputation_reference' => ( type => 'AddRemListbox', list_label => 'Imputation References', to_add_label => '&nbsp;' );
 
 has_field 'submit' => ( type => 'Submit' );

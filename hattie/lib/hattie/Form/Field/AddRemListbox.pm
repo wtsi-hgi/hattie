@@ -7,6 +7,8 @@ has 'list_label' => ( is => 'ro' );
 has 'to_add_label' => ( is => 'ro' );
 has 'value_field' => ( is => 'ro' );
 has '+multiple' => ( default => 1 );
+has '+widget_name_space' => ( default => sub { ['hattie::Widget::Field'] } );
+has '+widget' => ( default => 'AddRemListbox' );
 
 #has_field 'list' => ( type => 'Select', multiple => 1, build_label_method => \&lbl_list);
 #has_field 'remove' => ( do_label => 0, value => 'Remove', type => 'Button' );

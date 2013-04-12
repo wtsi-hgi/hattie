@@ -10,6 +10,10 @@
         </title>
         <meta charset="utf-8" />
         <style type="text/css">
+            html
+            {
+                font-family: Verdana, Arial, helvetica, serif;
+            }
             .formdata
             {
                 display: table;
@@ -58,10 +62,10 @@
                     [% # form.field('target').field('file').render %]
                 </span>
                 <span>
-                    [% # form.field('call_variants').render %]
+                    [% form.field('call_variants').render %]
                 </span>
                 <span>
-                    [% # form.field('perform_imputation').render %]
+                    [% form.field('perform_imputation').render %]
                 </span>
             </div>
             <div id="improvement" class="formdata">
@@ -84,10 +88,10 @@
                 </span>
                 <h3>Lane-Plex Auto QC Parameters</h3>
                 <span>
-                    [% # form.field('auto_qc_gtype_regex').render %]
+                    [% form.field('auto_qc_gtype_regex').render %]
                 </span>
                 <span>
-                    [% # form.field('auto_qc_insert_peak_window').render %]
+                    [% form.field('auto_qc_insert_peak_window').render %]
                 </span>
                 <div>
                     <table>
@@ -201,7 +205,10 @@
             </div>
             <div id="imputation" class="formdata">
                 <h2>Imputation Options</h2>
-                Please do this yourself, we collect this information for statistical purposes only at present.<br />
+                Please do this yourself, we collect this information for statistical purposes only at present.
+                <span>
+                    [% form.field('imputation_mode').render %]
+                </span>
                 <span>
                     [% # form.field('imputation_reference').field('list').render %]
                     [% # form.field('imputation_reference').field('remove').render %]
