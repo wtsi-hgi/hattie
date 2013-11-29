@@ -15,6 +15,7 @@ sub render {
 }
 
 sub render_elements {
+    my $result = shift;
     my $output = render_listbox_element ( $result );
     $output .= render_remove_button( $result );
     $output .= render_text_element( $result );
@@ -140,7 +141,7 @@ FormHandler Contributors - see HTML::FormHandler
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Gerda Shank.
+This software is copyright (c) 2013 by Gerda Shank, Genome Research Limited.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
