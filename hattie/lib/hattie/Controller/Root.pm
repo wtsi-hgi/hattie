@@ -10,6 +10,8 @@ BEGIN { extends 'Catalyst::Controller' }
 #
 __PACKAGE__->config(namespace => '');
 
+=encoding utf-8
+
 =head1 NAME
 
 hattie::Controller::Root - Root Controller for hattie

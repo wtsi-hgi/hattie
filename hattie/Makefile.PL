@@ -9,7 +9,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
 name 'hattie';
 all_from 'lib/hattie.pm';
 
-requires 'Catalyst::Runtime' => '5.90020';
+requires 'Catalyst::Runtime' => '5.90051';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
