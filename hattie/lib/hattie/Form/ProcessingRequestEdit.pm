@@ -7,12 +7,13 @@ use namespace::autoclean;
 
 has '+item_class' => ( default => 'ProcessingRequest' );
 has '+field_name_space' => ( default => 'hattie::Form::Field' );
+has '+widget_name_space' => ( default => sub { ['hattie::Form::Widget'] } );
 has '+widget_wrapper' => ( default => 'SimpleInline' );
 has '+is_html5' => ( default => 1 );
 
 has 'options_request_type' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Select...", 'WGS' => "WGS", 'WES' => "WES", 'Targeted' => "Targeted"] } );
 has 'options_studies_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "SEQCAP_WGS_FISH", 1 => "SEQCAP_WGS_PLAICE"]} );
-has 'options_target_list' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Please select an option...", "OMNI 2.5M" => "OMNI 2.5M", "dummy" => "dummy"]} );
+has 'options_target_list' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Please select an option...", "Argelant All Exon 50Mb" => "A", "dummy" => "dummy"]} );
 
 # core fields
 has_block 'core' => ( render_list => ['project', 'name', 'request_type', 'studies', 'target_block'] );

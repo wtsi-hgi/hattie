@@ -1,4 +1,4 @@
-package hattie::Widget::Field::AddRemListbox;
+package hattie::Form::Widget::Field::AddRemListbox;
 # ABSTRACT: AddRemListbox field rendering widget
 
 
@@ -119,7 +119,7 @@ __END__
 
 =head1 NAME
 
-hattie::Widget::Field::AddRemListbox - AddRemListbox field rendering widget
+hattie::Form::Widget::Field::AddRemListbox - AddRemListbox field rendering widget
 
 =head1 VERSION
 
@@ -132,7 +132,7 @@ have 'value' and 'label' keys, and may have an 'attributes' key.
 
 =head1 NAME
 
-hattie::Widget::Field::AddRemListbox
+hattie::Form::Widget::Field::AddRemListbox
 
 =head1 AUTHOR
 
