@@ -1,5 +1,5 @@
-package hattie::Form::Widget::Field::AddRemListbox;
-# ABSTRACT: AddRemListbox field rendering widget
+package hattie::Form::Widget::Field::ListboxRem;
+# ABSTRACT: ListboxRem field rendering widget
 
 
 use Moose::Role;
@@ -18,12 +18,10 @@ sub render_elements {
     my $result = shift;
     my $output = render_listbox_element ( $result );
     $output .= render_remove_button( $result );
-    $output .= render_text_element( $result );
-    $output .= render_add_button( $result );
     return $output;
 }
 
-sub render_element {
+sub render_listbox_element {
     my ( $self, $result ) = @_;
     $result ||= $self->result;
 
@@ -111,6 +109,18 @@ sub render_option {
     $self->inc_options_index;
     return $output;
 }
+	
+sub render_remove_button {
+	return "<input type=\"button\" value=\"Remove\" title=\"Remove a study\" />";
+}
+
+sub render_text_element {
+	return "<input type=\"text\" />";
+}
+
+sub render_add_button {
+	return "<input type=\"button\" value=\"Add\" title=\"Add the study\" />";
+}
 
 1;
 
@@ -119,7 +129,7 @@ __END__
 
 =head1 NAME
 
-hattie::Form::Widget::Field::AddRemListbox - AddRemListbox field rendering widget
+hattie::Form::Widget::Field::RemListbox - AddRemListbox field rendering widget
 
 =head1 VERSION
 

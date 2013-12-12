@@ -19,9 +19,10 @@ has 'options_target_list' => ( is => 'rw', traits => ['Array'], default => sub {
 has_block 'core' => ( render_list => ['project', 'name', 'request_type', 'studies', 'target_block'] );
 has_field 'revision' => ( type => 'Hidden', required => 1 );
 has_field 'project' => ( label => 'HGI Project Name', type => 'Text', required => 1 );
-has_field 'name' => ( label => 'Processing Request Name', required => 1 );
+has_field 'name' => ( label => 'Processing Request Name', type => 'Text', required => 1 );
 has_field 'request_type' => ( label => 'Request Type', type => 'Select', required => 1 );
-has_field 'studies' => ( type => 'AddRemListbox', list_label => 'Sequencescape Study Name', to_add_label => 'Study to add', value_field => 'studies' );
+has_field 'studies' => ( type => 'ListboxRem', label => 'Sequencescape Study Name', value_field => 'studies', widget => 'ListboxRem' );
+has_field 'studies_add' => ( type => 'EditAdd', label => 'Study to add' );
 has_field 'target' => ( list_label => 'Please select either existing target file', file_label => 'or upload a target file', type => 'ListOrFile' );
 
 # show or hide subforms
@@ -38,8 +39,10 @@ has_field 'auto_qc_gtype_regex' => ( type => 'Text', label => 'Allowed Genotype 
 has 'options_known_sites_realign_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "Mills-Devine", 1 => "1000G low coverage"]} );
 has 'options_known_sites_bqsr_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "dbSNP 137"]} );
 
-has_field 'known_sites_realign' => ( type => 'AddRemListbox', list_label => 'Known INDELs for realignment', to_add_label => '&nbsp;' );
-has_field 'known_sites_bqsr' => ( type => 'AddRemListbox', list_label => 'Known SNPs for BQSR', to_add_label => '&nbsp;' );
+has_field 'known_sites_realign' => ( type => 'ListboxRem', label => 'Known INDELs for realignment' );
+has_field 'known_sites_realign_add' => ( type => 'EditAdd', label => 'Known INDEL Resource to Add' );
+has_field 'known_sites_bqsr' => ( type => 'ListboxRem', label => 'Known SNPs for BQSR' );
+has_field 'known_sites_bqsr_add' => ( type => 'EditAdd', label => 'Known SNP Resource to Add' );
 
 
 # call variants
@@ -62,7 +65,8 @@ has_field 'annot_vep' => ( type => 'Checkbox', label => 'VEP' );
 has 'options_imputation_reference_list' => ( is => 'rw', traits => ['Array'], default => sub { [0 => "1000 Genomes"]} );
 has 'options_imputation_mode' => ( is => 'rw', traits => ['Array'], default => sub { ["" => "Select...", "both" => "Both","refinement" => "Variant Refinement","ref_imputation" => "Reference Imputation"]} );
 has_field 'imputation_mode' => (type => 'Select', label => 'Mode' );
-has_field 'imputation_reference' => ( type => 'AddRemListbox', list_label => 'Imputation References', to_add_label => '&nbsp;' );
+has_field 'imputation_reference' => ( type => 'ListboxRem', label => 'Imputation References' );
+has_field 'imputation_reference_add' => ( type => 'EditAdd', label => 'Inputation Reference to add' );
 
 has_field 'submit' => ( type => 'Submit' );
 
